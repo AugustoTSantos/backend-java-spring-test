@@ -11,8 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
 
 @Data
 @Entity
@@ -24,16 +24,20 @@ public class Task {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "title")
+    @NotBlank
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "description")
+    @NotBlank
+    @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "created_at") 
+    @NotBlank
+    @Column(name = "created_at", nullable = false)
     private Date createdAt;
 
-    @Column(name = "due_date") 
+    @NotBlank
+    @Column(name = "due_date", nullable = false)
     private Date dueDate;
 
     @ManyToOne(cascade = CascadeType.ALL)

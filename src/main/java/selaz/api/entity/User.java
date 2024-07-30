@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
@@ -18,10 +19,12 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "username")
+    @NotBlank
+    @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "nivel")
+    @NotBlank
+    @Column(name = "nivel", nullable = false)
     private String nivel;
 
 }
