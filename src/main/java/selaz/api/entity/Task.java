@@ -5,8 +5,6 @@ import java.util.Date;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,9 +13,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+
 @Data
 @Entity
-@Table(name = "Task")
+@Table(name = "`task`")  
 public class Task {
 
     @Id
@@ -31,18 +30,18 @@ public class Task {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "createdAt")
+    @Column(name = "created_at") 
     private Date createdAt;
 
-    @Column(name = "dueDate")
+    @Column(name = "due_date") 
     private Date dueDate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    private Status status;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "`status`")
+    private Status status; 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JoinColumn(name = "`user`", referencedColumnName = "id")
     private User user;
 
 }
